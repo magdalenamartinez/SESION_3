@@ -35,7 +35,7 @@ class CalculadoraTest {
 	
 	@Test
 	void testResta() {
-		assertEquals(-1, Calculadora.resta(3,2));
+		assertEquals(1, Calculadora.resta(3,2));
 	}
 	
 	@Test
