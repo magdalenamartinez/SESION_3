@@ -1,20 +1,30 @@
 package pkg;
 
+import java.util.ArrayList;
+import java.util.List;
+
+import pkg.Movimientos.Signo;
+
+
 
 public class Cuenta {
 	
 	double saldo = 0;
 	String titular;
 	String numero;
+	List<Movimientos> mMovimientos;
 	
 	public Cuenta(String titular, String numero, double saldo) {
 		this.saldo = saldo;
 		this.titular = titular;
 		this.numero = numero;
+		this.mMovimientos = new ArrayList<>();
 	}
 
 	public void ingresar(double i) {
 		this.saldo += i;
+		Movimientos mov = new Movimientos(this.saldo, Signo.D, "Detalle");
+		mMovimientos.add(mov);
 	}
 
 	public void setSaldo(double i) {
@@ -33,8 +43,10 @@ public class Cuenta {
 			resto = this.saldo - i;
 		}
 		double s = -500;
-		if (resto > s) {
-			this.saldo -= i;			
+		if (resto >= s) {
+			this.saldo -= i;	
+			Movimientos mov = new Movimientos(this.saldo, Signo.H, "Detalle");
+			mMovimientos.add(mov);
 		} else {
 			System.out.print("Fondos insuficientes (saldo " + this.saldo + ")");
 			System.out.println(" en la cuenta " + this.numero + " para el reintegro de " + i);
