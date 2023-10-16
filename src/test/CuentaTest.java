@@ -13,9 +13,10 @@ import pkg.Cuenta;
 class CuentaTest {
 
 	static Cuenta aux;
-	
+
 	@BeforeAll
 	static void setUpBeforeClass() throws Exception {
+		aux = new Cuenta("12345", "Manuel", 0);
 	}
 
 	@AfterAll
@@ -32,13 +33,14 @@ class CuentaTest {
 
 	@Test
 	void testIngresar() {
-		aux.Ingresar(1000);
+		aux.ingresar(1000);
 		assertEquals(1000, aux.getSaldo());
 	}
-	
+
 	@Test
 	void testRetirar() {
-		aux.Retirar(100);
+		aux.setSaldo(100);
+		aux.retirar(100);
 		assertEquals(0, aux.getSaldo());
 	}
 
