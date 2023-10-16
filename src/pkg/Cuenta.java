@@ -26,12 +26,18 @@ public class Cuenta {
 	}
 
 	public void retirar(double i) {
-		double resto = this.saldo - i;
-		if (resto >= -500) {
+		double resto = 0;
+		if (i < 0) {
+			resto = i + this.saldo;
+		} else {
+			resto = this.saldo - i;
+		}
+		double s = -500;
+		if (resto > s) {
 			this.saldo -= i;			
 		} else {
 			System.out.print("Fondos insuficientes (saldo " + this.saldo + ")");
-			System.out.println("en la cuenta " + this.numero + "para el reintegro de " + i);
+			System.out.println(" en la cuenta " + this.numero + " para el reintegro de " + i);
 		}
 	}
 

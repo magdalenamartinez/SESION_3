@@ -45,6 +45,13 @@ class CuentaTest {
 	}
 	
 	@Test
+	void testRetirarDescubierto() {
+		double cant = -600;
+		aux.retirar(cant);
+		assertEquals(0,aux.getSaldo());
+	}
+	
+	@Test
 	void testSetSaldo() {
 		aux.setSaldo(100);
 		assertEquals(100, aux.getSaldo());
